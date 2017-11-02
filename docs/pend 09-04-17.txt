@@ -1,0 +1,8 @@
+
+Testar nltk com o NER da stanford, problema para achar jar no classpath
+
+Testar via CURL o tagger online
+
+Tentar instalar novamente o polyglot ou alternativa como criar um serviço online em Linux
+
+

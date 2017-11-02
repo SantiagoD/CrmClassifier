@@ -1,0 +1,9 @@
+Salvar no csv cada interação
+Adicionar coluna criptografada no log
+Carregar dinamicamente categorias de csv
+Agendar criptografia automatica a cada dia
+Melhorar visual pagina de teste
+Deploy no IIS
+Uso de container
+
+

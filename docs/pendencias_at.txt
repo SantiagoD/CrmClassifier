@@ -1,0 +1,16 @@
+
+Adicionar coluna criptografada no log
+Carregar dinamicamente categorias de csv
+Deploy no IIS
+
+
+Uso de container
+Agendar criptografia automatica a cada dia
+Melhorar visual pagina de teste
+
+
+Salvar no csv cada interação
+Repositorio
+
+Testes de carga
+Monitoramento de recursos

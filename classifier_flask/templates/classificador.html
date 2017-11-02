@@ -1,0 +1,87 @@
+<html>
+
+  <head>
+    <title> Classificador EMAILS CRM </title>
+
+  
+  </head>
+  <body>
+    <div>
+    CATEGORIAS DE CLASSIFICAÇÃO:
+        <ul  id="categorias"></ul>
+    </div>
+    Inserir o texto do e-mail a classificar:
+    <form action="http://localhost:5000/classifier/api/v1.0/classify/" method="get">
+      <textarea name="email_content" id="email_content" rows="4" cols="50">
+      </textarea>
+      <!-- <input type="textbox" name="email_content" /> -->
+      <input type="button" value="Classificar" onclick="classifyEmail()" />
+    </form>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js">
+</script>
+
+<script>
+
+function classifyEmail () {
+
+     jQuery.ajax({
+         type: "GET",
+         url: "http://localhost:5000/classifier/api/v1.0/classify/" + encodeURIComponent($('#email_content').val()),
+         contentType: "application/json; charset=utf-8",
+         //data: JSON.stringify($('#email_content')),
+         dataType: "json",
+         success: function (data, status, jqXHR) {
+             alert("Categoria:" +  data.category);
+         },
+    
+         error: function (jqXHR, status) {
+             // error handler
+    
+         }    
+     });    
+}
+
+
+
+$( document ).ready(function() {
+    //alert("as");
+    $.ajax({
+    type: "GET",
+    url: "http://localhost:5000/classifier/api/v1.0/categories",
+    success: function(response){
+
+      // var ul = $('#categorias')
+      // $(response.items).each(function(index, item) {
+      //   alert(item.name);
+      //   ul.append(
+      //       $(document.createElement('li')).text(item.name)
+      //   );
+      // });
+      //alert(JSON.stringify(response));
+      //alert(response.categories[0].name);
+      
+
+      var cList = $('#categorias')
+      $.each(response.categories, function(i)
+      {
+          var li = $('<li/>')
+              .addClass('ui-menu-item')
+              .attr('role', 'menuitem')
+              .appendTo(cList);
+          var aaa = $('<a/>')
+              .addClass('ui-all')
+              .text(response.categories[i].id + " - " + response.categories[i].name )
+              .appendTo(li);
+      });
+      
+    },
+    datatype : "application/json",
+    contentType: "application/json",
+  });
+
+    
+});
+
+</script>
+  </body>
+</html>
